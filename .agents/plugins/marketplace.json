@@ -1,0 +1,5 @@
+{
+  "name": "codex-terminal-extensions-local",
+  "interface": { "displayName": "Codex Terminal Extensions" },
+  "plugins": [{ "name": "codex-terminal-extensions", "source": { "source": "local", "path": "./plugins/codex-terminal-extensions" }, "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" }, "category": "Productivity" }]
+}

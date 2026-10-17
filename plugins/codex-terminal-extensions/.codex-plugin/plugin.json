@@ -1,0 +1,7 @@
+{
+  "name": "codex-terminal-extensions",
+  "version": "0.1.0",
+  "description": "Set up the shared terminal command host used by modular Codex extensions.",
+  "skills": "./skills/",
+  "license": "MIT"
+}

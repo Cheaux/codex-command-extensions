@@ -1,0 +1,8 @@
+node_modules/
+dist/
+artifacts/
+*.tgz
+validation/
+
+__pycache__/
+*.py[cod]

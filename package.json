@@ -1,0 +1,44 @@
+{
+  "name": "codex-terminal-extensions",
+  "version": "0.1.0",
+  "description": "Shared command suggestions and terminal views for modular Codex CLI extensions",
+  "type": "module",
+  "license": "MIT",
+  "author": "Cheaux",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cheaux/codex-terminal-extensions.git"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "bin": {
+    "codex-terminal": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "runtime",
+    "plugins",
+    ".agents",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "tsc --noEmit",
+    "test": "npm run build && node --import tsx --test test/*.test.ts",
+    "prepack": "npm run build",
+    "test:package": "npm run build && node scripts/check-package.mjs"
+  },
+  "dependencies": {
+    "@xterm/headless": "6.0.0",
+    "string-width": "8.3.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "esbuild": "0.28.2",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2"
+  }
+}
