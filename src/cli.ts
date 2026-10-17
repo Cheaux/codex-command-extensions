@@ -13,7 +13,7 @@ async function run() {
   if (command === '--version') { console.log(version); return; }
   if (command === 'backend-path') { console.log(fileURLToPath(new URL('../runtime/pty_host.py', import.meta.url))); return; }
   if (['help','--help','-h'].includes(command)) {
-    console.log(`Codex Terminal Extensions ${version} — shared terminal command host
+    console.log(`Codex Command Extensions ${version} — shared terminal command host
 
 codex-terminal enable [--migrate-from FILE]  Enable one user-local Codex launcher
 codex-terminal disable                     Remove only the owned launcher

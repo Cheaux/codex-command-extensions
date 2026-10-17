@@ -1,13 +1,13 @@
 {
   "name": "codex-terminal-extensions",
-  "version": "0.1.0",
-  "description": "Shared command suggestions and terminal views for modular Codex CLI extensions",
+  "version": "0.1.1",
+  "description": "Custom slash commands, autocomplete, and modular command views for Codex CLI",
   "type": "module",
   "license": "MIT",
   "author": "Cheaux",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Cheaux/codex-terminal-extensions.git"
+    "url": "git+https://github.com/Cheaux/codex-command-extensions.git"
   },
   "engines": {
     "node": ">=24"
@@ -28,7 +28,8 @@
     "check": "tsc --noEmit",
     "test": "npm run build && node --import tsx --test test/*.test.ts",
     "prepack": "npm run build",
-    "test:package": "npm run build && node scripts/check-package.mjs"
+    "test:package": "npm run build && node scripts/check-package.mjs",
+    "package:directory": "python3 scripts/package-directory.py"
   },
   "dependencies": {
     "@xterm/headless": "6.0.0",
@@ -40,5 +41,18 @@
     "esbuild": "0.28.2",
     "tsx": "4.23.15",
     "typescript": "7.0.2"
-  }
+  },
+  "homepage": "https://github.com/Cheaux/codex-command-extensions",
+  "bugs": {
+    "url": "https://github.com/Cheaux/codex-command-extensions/issues"
+  },
+  "keywords": [
+    "codex",
+    "codex-cli",
+    "slash-commands",
+    "autocomplete",
+    "command-extensions",
+    "extension-host",
+    "terminal"
+  ]
 }

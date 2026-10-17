@@ -1,10 +1,10 @@
-# Codex Terminal Extensions
+# Codex Command Extensions
 
-**One terminal host for custom Codex commands, autocomplete, and retained views.** Install it once, then add feature packages such as Codex Remote or Codex Folders. Each feature registers its own commands; neither feature needs the other.
+**Custom slash commands and autocomplete for Codex CLI.** One shared host provides retained command views. Install it once, then add feature packages such as Codex Remote or Codex Folders. Each feature registers its own commands; neither feature needs the other.
 
 | Component | Owns |
 | --- | --- |
-| Terminal Extensions | One launcher, command registry, suggestions, keyboard routing, PTY views, terminal modes, resize, and titles |
+| Command Extensions | One launcher, command registry, suggestions, keyboard routing, PTY views, terminal modes, resize, and titles |
 | Codex Remote | `/qr`, native phone pairing, and remote-access tools |
 | Codex Folders | `/folders`, its `/resume` override, `/resumedbg`, folder browser, and project data |
 
@@ -16,9 +16,9 @@ Requires **Node 24+**, **Python 3**, and official **Codex CLI**. The current PTY
 
 ```sh
 export PATH="$HOME/.local/bin:$PATH"
-curl --fail --location --output codex-terminal-extensions-0.1.0.tgz \
-  https://github.com/Cheaux/codex-terminal-extensions/releases/download/v0.1.0/codex-terminal-extensions-0.1.0.tgz
-npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-terminal-extensions-0.1.0.tgz
+curl --fail --location --output codex-terminal-extensions-0.1.1.tgz \
+  https://github.com/Cheaux/codex-command-extensions/releases/download/v0.1.1/codex-terminal-extensions-0.1.1.tgz
+npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-terminal-extensions-0.1.1.tgz
 codex-terminal enable
 ```
 
@@ -94,6 +94,12 @@ npm test
 npm run test:package
 ```
 
-Tests cover registration conflicts, safe ownership/migration, input routing, multiple suggestions, native selection, aliases, escape/paste behavior, titles, terminal modes, and clean package installation. Report problems through [GitHub issues](https://github.com/Cheaux/codex-terminal-extensions/issues), without private conversation content or pairing credentials.
+Tests cover registration conflicts, safe ownership/migration, input routing, multiple suggestions, native selection, aliases, escape/paste behavior, titles, terminal modes, and clean package installation. Report problems through [GitHub issues](https://github.com/Cheaux/codex-command-extensions/issues), without private conversation content or pairing credentials.
 
 Community project by [Cheaux](https://github.com/Cheaux), licensed under [MIT](LICENSE). OpenAI does not maintain or endorse it.
+
+## Official directory status
+
+GitHub releases are available. This plugin has **not been submitted to or approved for the official ChatGPT/Codex plugin directory**. [Submission preparation](submission/README.md), [data handling](PRIVACY.md), and [license/service information](TERMS.md) are public.
+
+The public name is **Codex Command Extensions** (formerly Codex Terminal Extensions). The `codex-terminal` executable, package ID `codex-terminal-extensions`, environment variables, and registry paths remain compatible with existing installations.

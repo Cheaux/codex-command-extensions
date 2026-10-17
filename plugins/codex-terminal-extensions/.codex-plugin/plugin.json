@@ -1,7 +1,46 @@
 {
   "name": "codex-terminal-extensions",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Set up the shared terminal command host used by modular Codex extensions.",
   "skills": "./skills/",
-  "license": "MIT"
+  "license": "MIT",
+  "author": {
+    "name": "Cheaux",
+    "url": "https://github.com/Cheaux"
+  },
+  "homepage": "https://github.com/Cheaux/codex-command-extensions",
+  "repository": "https://github.com/Cheaux/codex-command-extensions",
+  "keywords": [
+    "codex",
+    "codex-cli",
+    "slash-commands",
+    "autocomplete",
+    "command-extensions",
+    "extension-host",
+    "terminal"
+  ],
+  "requires_local_executor": true,
+  "interface": {
+    "displayName": "Codex Command Extensions",
+    "shortDescription": "Slash commands & autocomplete",
+    "longDescription": "Add custom slash commands, autocomplete, keyboard shortcuts, and retained terminal views to Codex CLI. Install one shared command host, then register independent feature packages such as Codex Remote and Codex Folders. Each feature keeps its own tools and data. Requires Node 24+, Python 3, and the official Codex CLI. The current terminal backend supports Linux/macOS; Linux is verified and macOS is untested. Windows terminal support is not implemented. This setup skill requires local desktop execution and an explicit installation of the host CLI. Community project by Cheaux; not maintained or endorsed by OpenAI.",
+    "developerName": "Cheaux",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Custom slash commands",
+      "Command autocomplete",
+      "Retained terminal views"
+    ],
+    "websiteURL": "https://github.com/Cheaux/codex-command-extensions",
+    "supportURL": "https://github.com/Cheaux/codex-command-extensions/issues",
+    "privacyPolicyURL": "https://github.com/Cheaux/codex-command-extensions/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/Cheaux/codex-command-extensions/blob/main/TERMS.md",
+    "defaultPrompt": [
+      "Set up custom slash commands for Codex CLI.",
+      "Check my registered Codex commands."
+    ],
+    "logo": "./assets/icon.svg",
+    "composerIcon": "./assets/icon.svg",
+    "brandColor": "#202b3c"
+  }
 }

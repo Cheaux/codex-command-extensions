@@ -1,13 +1,7 @@
-Initial public release of the shared terminal host for modular Codex CLI extensions.
+codex-terminal-extensions 0.1.1
 
-- One command registry and user-local launcher, with independent provider manifests.
-- Generic autocomplete, keyboard routing, retained PTY views, overlay handoff, and native aliases.
-- Preserves tested terminal scrolling, titles, per-view input modes, resize, and cleanup.
-- Safe migration of an unchanged previous launcher; unregistering one feature preserves others.
-- Remote0.2.0 registers /qr without requiring Folders. Folders registers its browser and aliases independently.
+Public name updated to Codex Command Extensions; existing CLI, package IDs and registry paths remain compatible. Added official-directory draft ZIP packaging, listing metadata, icons, and public data/license information.
 
-Requires Node24+, Python3, and native Codex CLI. The current PTY backend supports Linux/macOS; Linux/Codex0.163.0 is tested. Windows needs a separate backend. Feature CLI/MCP tools do not require the host.
+Install the built `.tgz` for normal use. The `-directory.zip` asset is a draft for the OpenAI submission portal, not an approved or published listing. See [submission preparation](https://github.com/Cheaux/codex-command-extensions/blob/main/submission/README.md) for prerequisites and remaining account/review steps.
 
-[Installation and provider API](https://github.com/Cheaux/codex-terminal-extensions#install)
-
-Install the built .tgz asset, not the automatic source ZIP. SHA256SUMS verifies the download.
+Requires Node 24+ and compatible official Codex interfaces. The command host requires Python 3 on Linux/macOS; Windows terminal support remains unavailable.
