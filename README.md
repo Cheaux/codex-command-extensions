@@ -1,34 +1,15 @@
 # Codex Command Extensions
 
-**Custom slash commands and autocomplete for Codex CLI.** One shared host provides retained command views. Install it once, then add feature packages such as Codex Remote or Codex Folders. Each feature registers its own commands; neither feature needs the other.
+**Custom slash commands and autocomplete for Codex CLI.** Install this shared host once, then choose the extensions you want to use. Each extension supplies its own commands and features.
 
-| Component | Owns |
-| --- | --- |
-| Command Extensions | One launcher, command registry, suggestions, keyboard routing, PTY views, terminal modes, resize, and titles |
-| Codex Remote | `/qr`, native phone pairing, and remote-access tools |
-| Codex Folders | `/folders`, its `/resume` override, `/resumedbg`, folder browser, and project data |
+## What can I do with it?
 
-The host does not store conversations, credentials, device pairings, or folder databases. Feature CLI and MCP tools continue to work without the terminal host.
+- Discover installed extensions' commands as you type.
+- Complete and select commands with Tab, arrow keys, and Enter.
+- Open extension views and return to your chat.
+- Add or remove extensions independently.
 
-## Install
-
-Requires **Node 24+**, **Python 3**, and official **Codex CLI**. The current PTY backend supports Linux/macOS; Linux is tested. Windows needs a separate terminal backend and is not supported by this host version.
-
-```sh
-export PATH="$HOME/.local/bin:$PATH"
-curl --fail --location --output codex-terminal-extensions-0.1.2.tgz \
-  https://github.com/Cheaux/codex-command-extensions/releases/download/v0.1.2/codex-terminal-extensions-0.1.2.tgz
-npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-terminal-extensions-0.1.2.tgz
-codex-terminal enable
-```
-
-Then install a feature. For **Codex Remote 0.2.0+**, `codex-remote install` registers `/qr` when this host is installed; `codex-remote terminal enable` registers it and enables the host. **Codex Folders** uses `codex-folders enable`.
-
-Open a **new Codex terminal** to load registrations. Existing sessions stay running. If you need the setup skill in Codex, run `codex-terminal install`; it is optional for command execution.
-
-The launcher is placed in `~/.local/bin/codex`, before the original Codex executable on PATH. Set `CODEX_TERMINAL_BIN_DIR` for another user-owned directory. Unknown or modified executables are preserved. Previous Folders installations migrate through `codex-folders enable`, which supplies the exact prior ownership record.
-
-## Use and manage
+## Commands
 
 | Command | Purpose |
 | --- | --- |
@@ -42,9 +23,38 @@ The launcher is placed in `~/.local/bin/codex`, before the original Codex execut
 
 Type a registered command prefix to see suggestions. **Tab** completes; **Up/Down** selects custom or native suggestions; **Enter** runs the selected command; **Escape** dismisses custom suggestions. **Ctrl+X, then B** cycles retained views. A feature may register its own Ctrl+X shortcut.
 
-Unregistering Remote removes `/qr` and leaves Folders active. Disabling Folders removes only its commands and leaves Remote active. Use `codex-terminal disable` when you want to remove the shared launcher itself.
+Unregistering an extension removes only its commands. Use `codex-terminal disable` to remove the shared launcher for every extension.
 
 Script and service commands, remote CLI connections, `--help`, and `--version` pass through without a PTY. The original Codex binary is not modified. The host does not stop or restart the native daemon.
+
+## Install
+
+Requires **Node 24+**, **Python 3**, and official **Codex CLI**. The current PTY backend supports Linux/macOS; Linux is tested. Windows needs a separate terminal backend and is not supported by this host version.
+
+```sh
+export PATH="$HOME/.local/bin:$PATH"
+curl --fail --location --output codex-terminal-extensions-0.1.2.tgz \
+  https://github.com/Cheaux/codex-command-extensions/releases/download/v0.1.2/codex-terminal-extensions-0.1.2.tgz
+npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-terminal-extensions-0.1.2.tgz
+codex-terminal enable
+```
+
+Then install and enable an extension to add its commands. See [Recommended extensions](#recommended-extensions) below, or [build your own](#add-an-extension).
+
+Open a **new Codex terminal** to load registrations. Existing sessions stay running. If you need the setup skill in Codex, run `codex-terminal install`; it is optional for command execution.
+
+The launcher is placed in `~/.local/bin/codex`, before the original Codex executable on PATH. Set `CODEX_TERMINAL_BIN_DIR` for another user-owned directory. Unknown or modified executables are preserved. Previous Folders installations migrate through `codex-folders enable`, which supplies the exact prior ownership record.
+
+## Recommended extensions
+
+Choose the features you want to add:
+
+| Extension | What it adds |
+| --- | --- |
+| [Codex Remote](https://github.com/Cheaux/codex-remote) | Pair terminal Codex with the ChatGPT phone app and manage remote access. |
+| [Codex Folders](https://github.com/Cheaux/codex-folders) | Organize conversations into folders and share project instructions and memory. |
+
+Install these separately using their own setup guides. You can use either one on its own, or install both. Other developers can also [register their own extensions](#add-an-extension).
 
 ## Add an extension
 
