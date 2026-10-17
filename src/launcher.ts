@@ -183,10 +183,10 @@ export async function launch(args: string[], manifests: string[] = []) {
     } else void openOverlay(command, clear);
   }, sequence => theme.accept(sequence), {
     commands,
-    nativeSelection: () => {
-      const completion = input.commandCompletion();
-      const native = active && completion ? nativeCommands(active.terminal, completion.query) : [];
-      return { index: Math.max(0, native.findIndex(item => item.selected)), count: native.length };
+    nativeSelection: query => {
+      const native = active ? nativeCommands(active.terminal, query) : [];
+      const index = Math.max(0, native.findIndex(item => item.selected));
+      return { index, count: native.length, name: native[index]?.text.split(/\s+/)[0] };
     },
     repaint: schedule,
   });

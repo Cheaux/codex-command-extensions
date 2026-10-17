@@ -1,8 +1,8 @@
-export type InputCommand = { name: string; description: string; suggest?: boolean; preferNative?: boolean; shortcut?: string };
+export type InputCommand = { name: string; description: string; suggest?: boolean; preferNative?: boolean; replaceNative?: boolean; shortcut?: string };
 export type TerminalAction = string;
-export type CommandCompletion = { commands: InputCommand[]; nativeSelection(): { index: number; count: number }; repaint(): void };
+export type CommandCompletion = { commands: InputCommand[]; nativeSelection(query: string): { index: number; count: number; name?: string }; repaint(): void };
 
-/** Intercept only exact commands typed into an empty composer; preserve raw terminal input. */
+/** Track fresh command input and accepted suggestions; preserve drafts and raw terminal input. */
 export class TerminalInput {
   private candidate = '';
   private sequence: number[] = [];
@@ -22,6 +22,11 @@ export class TerminalInput {
     return !this.completionDismissed && this.qr && matches.length && this.composerVisible()
       ? { query: this.candidate, matches, selectedIndex: this.selectedIndex, selected: this.selectedIndex !== null } : undefined;
   }
+  private nativeOverride() {
+    if (!this.candidate || this.completionDismissed || !this.composerVisible()) return undefined;
+    const selected = this.qr?.nativeSelection(this.candidate).name;
+    return this.qr?.commands.find(command => command.replaceNative && command.name === selected && command.name.startsWith(this.candidate));
+  }
   feed(data: Buffer) {
     const forwarded: number[] = [];
     const forward = (value: Buffer) => { for (const byte of value) forwarded.push(byte); };
@@ -39,7 +44,7 @@ export class TerminalInput {
           const sequence = Buffer.from(this.sequence); const text = sequence.toString('ascii');
           if (!this.paste && this.control?.(sequence)) { this.sequence = []; continue; }
           if (!this.paste && this.commandCompletion() && ['\x1b[A', '\x1b[B', '\x1bOA', '\x1bOB'].includes(text)) {
-            const down = text.endsWith('B'), native = this.qr!.nativeSelection(), count = this.commandCompletion()!.matches.length;
+            const down = text.endsWith('B'), native = this.qr!.nativeSelection(this.candidate), count = this.commandCompletion()!.matches.length;
             if (this.selectedIndex !== null) {
               const next = this.selectedIndex + (down ? 1 : -1);
               if (next >= 0 && next < count) this.selectedIndex = next;
@@ -82,6 +87,14 @@ export class TerminalInput {
         const suffix = command.slice(this.candidate.length); this.candidate = command; this.selectedIndex = 0; this.draftBytes += suffix.length;
         forward(Buffer.from(suffix)); flush(); this.qr!.repaint(); continue;
       }
+      if (byte === 9) {
+        const command = this.nativeOverride();
+        if (command) {
+          const suffix = command.name.slice(this.candidate.length);
+          this.candidate = command.name; this.selectedIndex = null; this.draftBytes += suffix.length;
+          forward(Buffer.from(suffix)); flush(); this.qr!.repaint(); continue;
+        }
+      }
       if (byte === 0x18) {
         this.chord = true;
         this.timer = setTimeout(() => { if (this.chord) { this.chord = false; this.forward(Buffer.from([0x18])); } }, 500);
@@ -94,6 +107,11 @@ export class TerminalInput {
           const command = completion.matches[completion.selectedIndex!]!.name;
           forward(Buffer.from(command.slice(this.candidate.length)));
           this.candidate = ''; this.draftBytes = 0; flush(); this.action(command, true); return;
+        }
+        const replacement = index === data.length - 1 ? this.nativeOverride() : undefined;
+        if (replacement) {
+          forward(Buffer.from(replacement.name.slice(this.candidate.length)));
+          this.candidate = ''; this.draftBytes = 0; flush(); this.action(replacement.name, true); return;
         }
         const command = this.candidate; this.candidate = ''; this.draftBytes = 0;
         if (this.qr?.commands.some(item => item.name === command) && this.composerVisible() && index === data.length - 1) { flush(); this.action(command, true); return; }

@@ -16,9 +16,9 @@ Requires **Node 24+**, **Python 3**, and official **Codex CLI**. The current PTY
 
 ```sh
 export PATH="$HOME/.local/bin:$PATH"
-curl --fail --location --output codex-terminal-extensions-0.1.1.tgz \
-  https://github.com/Cheaux/codex-command-extensions/releases/download/v0.1.1/codex-terminal-extensions-0.1.1.tgz
-npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-terminal-extensions-0.1.1.tgz
+curl --fail --location --output codex-terminal-extensions-0.1.2.tgz \
+  https://github.com/Cheaux/codex-command-extensions/releases/download/v0.1.2/codex-terminal-extensions-0.1.2.tgz
+npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-terminal-extensions-0.1.2.tgz
 codex-terminal enable
 ```
 
@@ -74,7 +74,7 @@ Command options:
 
 - `suggest: false`: intercept the exact command without adding a duplicate suggestion.
 - `preferNative: true`: keep the native suggestion selected until the custom command is chosen or typed in full.
-- `replaceNative: true`: explicitly opt into a built-in name such as `/resume`.
+- `replaceNative: true`: explicitly opt into a built-in name such as `/resume`. Accepting that native suggestion with Enter or Tab also uses the registered action.
 - `shortcut: "f"`: register Ctrl+X, then F. B is reserved for switching views.
 
 Actions:

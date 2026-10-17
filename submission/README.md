@@ -2,7 +2,7 @@
 
 Status: **prepared locally; not uploaded, approved, or published**.
 
-Build and validate the draft with `npm run package:directory`. The output is `artifacts/codex-command-extensions-0.1.1-directory.zip`. Use the directory ZIP, not the npm TGZ or GitHub source archive, in [OpenAI Plugins](https://platform.openai.com/plugins).
+Build and validate the draft with `npm run package:directory`. The output is `artifacts/codex-command-extensions-0.1.2-directory.zip`. Use the directory ZIP, not the npm TGZ or GitHub source archive, in [OpenAI Plugins](https://platform.openai.com/plugins).
 
 This is a desktop-only skills plugin. The manifest sets `requires_local_executor: true`. It does not contain an MCP server.
 

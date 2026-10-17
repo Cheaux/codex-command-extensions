@@ -1,7 +1,7 @@
-codex-terminal-extensions 0.1.1
+Codex Command Extensions 0.1.2
 
-Public name updated to Codex Command Extensions; existing CLI, package IDs and registry paths remain compatible. Added official-directory draft ZIP packaging, listing metadata, icons, and public data/license information.
+Fixed native command autocomplete bypassing registered replacements. Accepting `/resume` from the native popup with Enter or Tab now opens Folders when its provider is registered, just like typing the full command. `/resumedbg` still opens the original picker; `/resume THREAD_ID` remains native.
 
-Install the built `.tgz` for normal use. The `-directory.zip` asset is a draft for the OpenAI submission portal, not an approved or published listing. See [submission preparation](https://github.com/Cheaux/codex-command-extensions/blob/main/submission/README.md) for prerequisites and remaining account/review steps.
+Validated with 20 host tests, clean-package checks, and real isolated Codex 0.163 terminal checks for full typing, Tab/Enter acceptance, and the original-picker alias.
 
-Requires Node 24+ and compatible official Codex interfaces. The command host requires Python 3 on Linux/macOS; Windows terminal support remains unavailable.
+Install the `.tgz` asset, then open a new Codex terminal; existing sessions and phone pairing stay running. The `-directory.zip` is a submission draft, not an official directory listing. See [submission preparation](https://github.com/Cheaux/codex-command-extensions/blob/main/submission/README.md).

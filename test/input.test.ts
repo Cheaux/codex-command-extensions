@@ -102,6 +102,37 @@ test('original picker completion preserves default /resume, supports arrows/Tab 
     const r = qrRouter(false); r.input.feed(Buffer.from(value)); assert.equal(r.input.commandCompletion(), undefined); assert.deepEqual(r.actions, []); assert.equal(r.text(), value); r.input.reset();
   }
 });
+test('explicit native overrides apply when the native suggestion is accepted with Enter or Tab', () => {
+  function overridden(alias = true, native = '/resume', empty = true) {
+    const chunks: Buffer[] = [], actions: unknown[] = [];
+    const input = new TerminalInput(() => empty, () => true, data => chunks.push(data), (name, clear) => actions.push([name, clear]), undefined, {
+      commands: [{ name: '/resume', description: 'Browse chat folders', suggest: false, replaceNative: true },
+        ...(alias ? [{ name: '/resumedbg', description: 'Open the original chat picker', preferNative: true }] : [])],
+      nativeSelection: () => ({ index: 0, count: native ? 1 : 0, name: native || undefined }), repaint: () => {},
+    });
+    return { input, actions, text: () => Buffer.concat(chunks).toString() };
+  }
+  for (const alias of [true, false]) {
+    const enter = overridden(alias); enter.input.feed(Buffer.from('/res')); enter.input.feed(Buffer.from('\r'));
+    assert.deepEqual(enter.actions, [['/resume', true]]); assert.equal(enter.text(), '/resume'); enter.input.reset();
+    const tab = overridden(alias); tab.input.feed(Buffer.from('/res\t'));
+    assert.equal(tab.text(), '/resume'); assert.deepEqual(tab.actions, []);
+    tab.input.feed(Buffer.from('\r')); assert.deepEqual(tab.actions, [['/resume', true]]); tab.input.reset();
+  }
+  const args = overridden(); args.input.feed(Buffer.from('/res\t thread-id\r'));
+  assert.deepEqual(args.actions, []); assert.equal(args.text(), '/resume thread-id\r'); args.input.reset();
+  const alias = overridden(); alias.input.feed(Buffer.from('/res\x1b[A\r'));
+  assert.deepEqual(alias.actions, [['/resumedbg', true]]); alias.input.reset();
+  for (const value of ['message /res\r', '\x1b[200~/res\x1b[201~\r']) {
+    const pasted = overridden(); pasted.input.feed(Buffer.from(value)); assert.deepEqual(pasted.actions, []); pasted.input.reset();
+  }
+  for (const selected of ['/restart', '']) {
+    const other = overridden(true, selected); other.input.feed(Buffer.from('/res\r'));
+    assert.deepEqual(other.actions, []); assert.equal(other.text(), '/res\r'); other.input.reset();
+  }
+  const draft = overridden(true, '/resume', false); draft.input.feed(Buffer.from('/res\r'));
+  assert.deepEqual(draft.actions, []); draft.input.reset();
+});
 test('original picker description appears alongside native resume without selecting it by default', async () => {
   const terminal = new Terminal({ cols: 80, rows: 15, allowProposedApi: true });
   await new Promise<void>(resolve => terminal.write('\x1b[10;1H› /resume  resume a saved chat\x1b[12;1H› /res', resolve));
