@@ -1,6 +1,6 @@
 ---
-title: Install Codex CLI command extensions
-description: Install the Codex Command Extensions release, enable its user-local launcher, register plugins, check PATH, update or remove terminal integration.
+title: Install the command host
+description: Install the Codex command host, enable its user-local launcher, register feature plugins and check PATH. Includes updates and removal.
 permalink: /install/
 ---
 {% include nav.html %}

@@ -1,6 +1,6 @@
 ---
-title: Codex slash-command FAQ and troubleshooting
-description: Fix missing custom Codex commands, distinguish host and feature plugins, understand Linux and macOS support, and safely disable the terminal launcher.
+title: Slash-command FAQ
+description: Fix missing custom Codex CLI commands, understand host and feature plugins, check platform support and disable the launcher safely.
 permalink: /faq/
 ---
 {% include nav.html %}

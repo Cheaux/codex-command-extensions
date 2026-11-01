@@ -1,6 +1,6 @@
 ---
-title: Build a Codex CLI slash-command extension
-description: Define a terminal-extension.json provider with custom slash commands, retained views, overlays, native aliases and keyboard shortcuts for Codex CLI.
+title: Build a slash-command plugin
+description: Build a Codex CLI command plugin with a terminal-extension.json manifest, retained views, overlays, native aliases and keyboard shortcuts.
 permalink: /extensions/
 ---
 {% include nav.html %}

@@ -1,6 +1,6 @@
 ---
-title: Custom slash commands and autocomplete for Codex CLI
-description: Add custom Codex CLI slash commands, Tab autocomplete and retained terminal views. Install the shared host for Codex Folders, Remote or your own extensions.
+title: Custom commands for Codex CLI
+description: Add custom slash commands, Tab autocomplete and retained views to Codex CLI. Use the shared host with Folders, Remote or your own plugins.
 permalink: /
 ---
 {% include nav.html %}
