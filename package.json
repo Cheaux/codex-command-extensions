@@ -1,7 +1,7 @@
 {
   "name": "codex-terminal-extensions",
   "version": "0.1.2",
-  "description": "Custom slash commands, autocomplete, and modular command views for Codex CLI",
+  "description": "Custom slash commands, Tab autocomplete and retained terminal views for Codex CLI. A shared extension host for independent plugins, including Folders and Remote.",
   "type": "module",
   "license": "MIT",
   "author": "Cheaux",
@@ -42,17 +42,26 @@
     "tsx": "4.23.15",
     "typescript": "7.0.2"
   },
-  "homepage": "https://github.com/Cheaux/codex-command-extensions",
+  "homepage": "https://cheaux.github.io/codex-command-extensions/",
   "bugs": {
     "url": "https://github.com/Cheaux/codex-command-extensions/issues"
   },
   "keywords": [
+    "autocomplete",
     "codex",
     "codex-cli",
-    "slash-commands",
-    "autocomplete",
-    "command-extensions",
+    "codex-plugin",
+    "openai-codex",
     "extension-host",
-    "terminal"
+    "slash-commands",
+    "terminal",
+    "command-line",
+    "developer-tools",
+    "nodejs",
+    "typescript",
+    "python",
+    "pty",
+    "plugins",
+    "modular"
   ]
 }

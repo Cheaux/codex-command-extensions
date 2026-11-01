@@ -1,6 +1,8 @@
-# Codex Command Extensions
+# Codex Command Extensions — custom slash commands for Codex CLI
 
 **Custom slash commands and autocomplete for Codex CLI.** Install this shared host once, then choose the extensions you want to use. Each extension supplies its own commands and features.
+
+[Documentation](https://cheaux.github.io/codex-command-extensions/) · [Install](https://cheaux.github.io/codex-command-extensions/install/) · [Build an extension](https://cheaux.github.io/codex-command-extensions/extensions/) · [FAQ and troubleshooting](https://cheaux.github.io/codex-command-extensions/faq/) · [Download v0.1.2](https://github.com/Cheaux/codex-command-extensions/releases/tag/v0.1.2)
 
 ## What can I do with it?
 

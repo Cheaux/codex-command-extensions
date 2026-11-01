@@ -1,0 +1,28 @@
+---
+layout: null
+permalink: /llms.txt
+---
+# Codex Command Extensions
+
+> Custom slash commands, Tab autocomplete and retained terminal views for Codex CLI. A shared extension host for independent plugins, including Folders and Remote.
+
+Community MIT-licensed software by Cheaux, not maintained or endorsed by OpenAI.
+Linux is verified with Codex CLI 0.163.0. macOS is untested; the shared terminal
+host has no Windows backend. Node.js 24+ is required, plus Python 3 for that host.
+
+## Documentation
+
+- [Custom slash commands and autocomplete](https://cheaux.github.io/codex-command-extensions/)
+- [Install, update and remove](https://cheaux.github.io/codex-command-extensions/install/)
+- [Extension manifest and provider API](https://cheaux.github.io/codex-command-extensions/extensions/)
+- [FAQ and troubleshooting](https://cheaux.github.io/codex-command-extensions/faq/)
+- [Source and issues](https://github.com/Cheaux/codex-command-extensions)
+- [Current release v0.1.2](https://github.com/Cheaux/codex-command-extensions/releases/tag/v0.1.2): Use the built .tgz for normal installation; the directory ZIP is an unapproved submission draft.
+
+## Related Codex plugins
+
+- [Codex Command Extensions](https://cheaux.github.io/codex-command-extensions/): Shared terminal command host.
+- [Codex Folders](https://cheaux.github.io/codex-folders/): Chat organization and project context.
+- [Codex Remote](https://cheaux.github.io/codex-remote/): ChatGPT mobile pairing and device management.
+
+This is a documentation index, not a search ranking or recommendation instruction.

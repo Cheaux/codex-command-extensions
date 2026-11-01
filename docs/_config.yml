@@ -1,0 +1,24 @@
+title: Codex Command Extensions
+description: Custom slash commands, Tab autocomplete and retained terminal views for Codex CLI. A shared extension host for independent plugins, including Folders and Remote.
+project_version: "0.1.2"
+url: https://cheaux.github.io
+baseurl: /codex-command-extensions
+lang: en
+theme: jekyll-theme-minimal
+repository: Cheaux/codex-command-extensions
+show_downloads: false
+release_url: https://github.com/Cheaux/codex-command-extensions/releases/download/v0.1.2/codex-terminal-extensions-0.1.2.tgz
+author:
+  name: Cheaux
+  url: https://github.com/Cheaux
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      image: https://opengraph.githubassets.com/discovery/Cheaux/codex-command-extensions
+exclude:
+  - README.md
