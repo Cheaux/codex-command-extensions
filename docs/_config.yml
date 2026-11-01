@@ -19,6 +19,6 @@ defaults:
       path: ""
     values:
       layout: default
-      image: https://opengraph.githubassets.com/discovery/Cheaux/codex-command-extensions
+      image: /assets/social-card.png
 exclude:
   - README.md

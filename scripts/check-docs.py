@@ -60,7 +60,7 @@ for page in pages:
     doc = Page(source)
     assert doc.canonical == [f"{origin}{base}/{page}"], (page, doc.canonical)
     assert len(doc.description) == 1 and doc.description[0], f"Missing description: {page}"
-    assert doc.image == ["https://opengraph.githubassets.com/discovery/Cheaux/codex-command-extensions"], (page, doc.image)
+    assert doc.image == [f"{origin}{base}/assets/social-card.png"], (page, doc.image)
     parsed[page] = doc
 
 home_schemas = [s for s in parsed[""].schemas if s.get("@type") == "SoftwareSourceCode"]
